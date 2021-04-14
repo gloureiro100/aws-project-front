@@ -15,21 +15,24 @@ export class UserListComponent implements OnInit {
 
   constructor(private api: ApiService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
 
-    this.api.getUsers()
-      .subscribe((res: any) => {
-        console.log(res)
-        this.data = res
-        console.log(this.data)
-        this.isLoadingResults = false
-      }, err => {
-        console.log(err)
-        this.isLoadingResults = false
-      })
-    console.log(this.isLoadingResults);
+    
+    this.api.get().then((res: any) => {
+      
+      this.data = res.data;
+      this.isLoadingResults = false;
+
+    }).catch(err => {
+
+      this.isLoadingResults = false;
+
+    });
+    
 
   }
+
+
 
 
 
