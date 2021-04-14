@@ -16,7 +16,8 @@ const httpOptions =
     });
 
 const proxyUrl = 'https://cors-anywhere.herokuapp.com/'
-const apiUrl = 'http://qxk6pov3eg.execute-api.us-east-1.amazonaws.com/dev';
+const awsUrl = 'http://qxk6pov3eg.execute-api.us-east-1.amazonaws.com/dev'
+const apiUrl = `${proxyUrl}${awsUrl}` 
 
 @Injectable({
   providedIn: 'root'
