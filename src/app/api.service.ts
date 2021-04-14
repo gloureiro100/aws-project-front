@@ -26,16 +26,16 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
+  // private handleError<T>(operation = 'operation', result?: T) {
+  //   return (error: any): Observable<T> => {
 
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
+  //     // TODO: send the error to remote logging infrastructure
+  //     console.error(error); // log to console instead
 
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
-  }
+  //     // Let the app keep running by returning an empty result.
+  //     return of(result as T);
+  //   };
+  // }
 
   getUsers(): Observable<User[]> {
 
@@ -43,6 +43,12 @@ export class ApiService {
       {
         headers: httpOptions
       });
+  }
+
+  async get(): Promise<User[]> {
+
+    return await axios.get('https://qxk6pov3eg.execute-api.us-east-1.amazonaws.com/dev/users');
+    
   }
 
 }
