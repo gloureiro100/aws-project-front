@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 import { Car } from '../models/car.class';
+import { Rent } from '../models/rent.class';
 import { User } from '../models/user.class';
 
 @Component({
@@ -16,7 +17,7 @@ export class RentCreateComponent implements OnInit {
 
   users: User[];
   cars: Car[];
-  
+
   msg: any = {
     type: "",
     message: ""
@@ -30,7 +31,7 @@ export class RentCreateComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
 
     this.getCars();
     this.getUsers();
@@ -42,11 +43,11 @@ export class RentCreateComponent implements OnInit {
   }
 
   async createRent() {
-    
+
     this.isLoadingResults = true;
 
     this.api.postRent(this.rentForm.value).then(async (response: any) => {
-      
+
       this.msg = {
         type: 'success',
         message: response.message
@@ -63,15 +64,18 @@ export class RentCreateComponent implements OnInit {
 
       this.isLoadingResults = false;
     });
-    
+
   }
 
-  async getUsers(){
+  async getUsers() {
     this.users = await this.api.getUsers();
   }
 
-  async getCars(){
+  async getCars() {
     this.cars = await this.api.getCars();
+    const activeRents = (await this.api.getRents()).filter(x => x.status);
+
+    this.cars = this.cars.filter(x => !activeRents.find(y => y.carId === x.id))
   }
 
 
