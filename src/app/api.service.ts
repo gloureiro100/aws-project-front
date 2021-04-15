@@ -37,4 +37,8 @@ export class ApiService {
     return this.instance.post('/rents', params);
   }
 
+  async putRent(id: string): Promise<Response>{
+    return this.instance.put(`/rents/${id}`);
+  }
+
 }

@@ -11,7 +11,7 @@ import { User } from '../models/user.class';
 })
 export class RentListComponent implements OnInit {
 
-  public displayedColumns: string[] = ['carName', 'userName', 'status']
+  public displayedColumns: string[] = ['carName', 'userName', 'status', 'actions']
   public data: Rent[] = []
   public users: User[] = [];
   public cars: Car[] = [];
@@ -23,39 +23,58 @@ export class RentListComponent implements OnInit {
 
   async ngOnInit() {
 
-      let result: Rent[] = [];
+      this.getRents();
+
+  }
+
+  async getRents(){
+    let result: Rent[] = [];
     
-      this.cars = await this.api.getCars();
+    this.cars = await this.api.getCars();
 
-      this.users = await this.api.getUsers();
+    this.users = await this.api.getUsers();
 
-      this.rents = await this.api.getRents();
+    this.rents = await this.api.getRents();
 
-      // this.rents = this.rents.filter(item => item.status);
+    this.cars.forEach(car => {
 
-      this.cars.forEach(car => {
+      let rent: Rent = this.rents.find(item => item.carId === car.id && item.status );
 
-        let rent: Rent = this.rents.find(item => item.carId === car.id );
+      if(!rent){
+        rent = new Rent();
+        rent.userName = "";
+        rent.status = false;
+      } else {
+        rent.userName = this.users.find(user => user.id === rent.userId).name;
+      }
 
-        if(!rent){
-          rent = new Rent();
-          rent.userName = "";
-          rent.status = false;
-        } else {
-          rent.userName = this.users.find(user => user.id === rent.userId).name;
-        }
+      rent.carName = car.model;
 
-        rent.carName = car.model;
+      result.push(rent);
 
-        result.push(rent);
+    });
 
+    this.data = result;
+
+    this.isLoadingResults = false;
+  }
+
+  async returnCar(obj: Rent){
+    
+    if (window.confirm("Dejesa realizar a devoluçõa deste veículo?")) {
+      
+      this.api.putRent(obj.carId).then(async response => {
+        console.log(response);
+
+        await this.getRents();
+
+      }).catch(err => {
+        console.error(err);
       });
 
-      this.data = result;
+    }
 
-      this.isLoadingResults = false;
-
-
+    
   }
 
 }
