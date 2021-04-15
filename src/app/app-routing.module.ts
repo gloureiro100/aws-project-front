@@ -7,6 +7,7 @@ import { CarCreateComponent } from './car-create/car-create.component';
 import { CarListComponent } from './car-list/car-list.component';
 import { RentEditComponent } from './rent-edit/rent-edit.component';
 import { RentListComponent } from './rent-list/rent-list.component';
+import { RentCreateComponent } from './rent-create/rent-create.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,11 @@ const routes: Routes = [
     path: 'rent-list',
     component: RentListComponent,
     data: { title: 'Listar Aluguéis' }
+  },
+  {
+    path: 'rent-create',
+    component: RentCreateComponent,
+    data: { title: 'Alugar carro' }
   },
   {
     path: '',

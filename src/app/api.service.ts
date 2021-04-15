@@ -26,15 +26,15 @@ export class ApiService {
   }
 
   async postUser( params: User): Promise<Response>{
-    return await this.instance.post('/users', params);
+    return this.instance.post('/users', params);
   }
 
   async postCar(params: Car): Promise<Response>{
-    return await this.instance.post('/cars', params);
+    return this.instance.post('/cars', params);
   }
 
   async postRent(params: Rent): Promise<Response>{
-    return await this.instance.post('/rents', params);
+    return this.instance.post('/rents', params);
   }
 
 }

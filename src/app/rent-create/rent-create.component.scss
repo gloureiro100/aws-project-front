@@ -1,0 +1,43 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.container {
+    margin: 50px auto;
+    padding: 20px;
+
+    .title {
+        text-align: center;
+        padding-bottom: 20px;
+    }
+
+    form mat-form-field {
+        padding: 10px;
+    }
+
+    button {
+        display: block;
+        width: 100px;
+        margin: auto;
+    }
+
+    .example-loading-shade {
+        display: flex;
+        justify-content: center;
+    }
+
+    .error{
+        color: #F00;
+        text-align: center;
+        font-style: italic;
+    }
+
+    .success{
+        color: rgb(0, 90, 0);
+        text-align: center;
+        font-style: italic;
+    }
+
+}

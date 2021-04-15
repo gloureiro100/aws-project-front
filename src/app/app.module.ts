@@ -27,6 +27,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { RentListComponent } from './rent-list/rent-list.component';
 import { MenuListComponent } from './menu-list/menu-list.component';
+import { RentCreateComponent } from './rent-create/rent-create.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { MenuListComponent } from './menu-list/menu-list.component';
     CarListComponent,
     RentEditComponent,
     RentListComponent,
-    MenuListComponent
+    MenuListComponent,
+    RentCreateComponent
   ],
   imports: [
     BrowserModule,

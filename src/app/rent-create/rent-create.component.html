@@ -1,0 +1,35 @@
+<div class="container">
+  
+  <h1 class="title">Alugue um carro</h1>
+  
+  
+  <form [formGroup]="rentForm" (submit)="createRent()">
+    
+    <p class="{{msg.type === 'error' ? 'error' : 'success'}}">{{msg.message}}</p>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Usuário</mat-label>
+      <mat-select formControlName="userId" name="userId" required>
+        <mat-option *ngFor="let user of users" [value]="user.id">
+          {{user.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+      <mat-label>Carro</mat-label>
+      <mat-select formControlName="carId" name="carId" required>
+        <mat-option *ngFor="let car of cars" [value]="car.id">
+          {{car.model}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <button mat-raised-button color="primary" type="submit" *ngIf="!isLoadingResults" [disabled]="rentForm.invalid">Alugar</button>
+    
+    <div class="example-loading-shade" *ngIf="isLoadingResults">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+    
+  </form>
+</div>

@@ -1,4 +1,6 @@
-<div class="example-container mat-elevation-z8">
+<app-menu-list></app-menu-list>
+
+<div class="container">
 
     <h2>Lista de Aluguéis</h2>
 
@@ -7,7 +9,7 @@
     </div>
 
     <div class="button-row">
-        <a mat-flat-button color="primary" [routerLink]="['/car-create']">
+        <a mat-flat-button color="primary" [routerLink]="['/rent-create']">
             <mat-icon>add</mat-icon> Aluguel
         </a>
     </div>
@@ -16,22 +18,22 @@
         <table mat-table [dataSource]="data" class="example-table" matSort matSortActive="name" matSortDisableClear
             matSortDirection="asc">
 
-            <!-- Cases Name Column -->
-            <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef>Id</th>
-                <td mat-cell *matCellDef="let row">{{row.id}}</td>
-            </ng-container>
-
             <!-- Cases Age Column -->
-            <ng-container matColumnDef="carId">
-                <th mat-header-cell *matHeaderCellDef>ID de Carro</th>
-                <td mat-cell *matCellDef="let row">{{row.carId}}</td>
+            <ng-container matColumnDef="carName">
+                <th mat-header-cell *matHeaderCellDef>Carro</th>
+                <td mat-cell *matCellDef="let row">{{row.carName}}</td>
             </ng-container>
 
             <!-- Cases Status Column -->
-            <ng-container matColumnDef="userId">
-                <th mat-header-cell *matHeaderCellDef>ID de Usuário</th>
-                <td mat-cell *matCellDef="let row">{{row.userId}}</td>
+            <ng-container matColumnDef="userName">
+                <th mat-header-cell *matHeaderCellDef>Usuário</th>
+                <td mat-cell *matCellDef="let row">{{row.userName}}</td>
+            </ng-container>
+
+            <!-- Cases Status Column -->
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef>Status</th>
+                <td mat-cell *matCellDef="let row">{{row.status ? "Alugado" : "Disponível"}}</td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -41,3 +43,8 @@
     </div>
 
 </div>
+
+{{ "Rents: " + (rents | json) }}<br/><br/>
+{{ "Users: " + (users | json) }}<br/><br/>
+{{ "Cars: " + (cars | json) }}<br/><br/>
+{{ "Data: " + (data | json) }}<br/><br/>
