@@ -18,9 +18,9 @@ export class UserListComponent implements OnInit {
   async ngOnInit() {
 
     
-    this.api.get().then((res: any) => {
+    this.api.getUsers().then((res: any) => {
       
-      this.data = res.data;
+      this.data = res;
       this.isLoadingResults = false;
 
     }).catch(err => {

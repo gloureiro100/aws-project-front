@@ -25,6 +25,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSelectModule } from '@angular/material/select';
+import { RentListComponent } from './rent-list/rent-list.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatSelectModule } from '@angular/material/select';
     UserListComponent,
     CarCreateComponent,
     CarListComponent,
-    RentEditComponent
+    RentEditComponent,
+    RentListComponent
   ],
   imports: [
     BrowserModule,

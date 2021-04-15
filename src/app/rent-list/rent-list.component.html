@@ -1,6 +1,6 @@
 <div class="example-container mat-elevation-z8">
 
-    <h2>Lista de Carros</h2>
+    <h2>Lista de Aluguéis</h2>
 
     <div class="example-loading-shade" *ngIf="isLoadingResults">
         <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
@@ -8,7 +8,7 @@
 
     <div class="button-row">
         <a mat-flat-button color="primary" [routerLink]="['/car-create']">
-            <mat-icon>add</mat-icon> Cases
+            <mat-icon>add</mat-icon> Aluguel
         </a>
     </div>
 
@@ -23,15 +23,15 @@
             </ng-container>
 
             <!-- Cases Age Column -->
-            <ng-container matColumnDef="model">
-                <th mat-header-cell *matHeaderCellDef>Modelo</th>
-                <td mat-cell *matCellDef="let row">{{row.model}}</td>
+            <ng-container matColumnDef="carId">
+                <th mat-header-cell *matHeaderCellDef>ID de Carro</th>
+                <td mat-cell *matCellDef="let row">{{row.carId}}</td>
             </ng-container>
 
             <!-- Cases Status Column -->
-            <ng-container matColumnDef="brand">
-                <th mat-header-cell *matHeaderCellDef>Marca</th>
-                <td mat-cell *matCellDef="let row">{{row.brand}}</td>
+            <ng-container matColumnDef="userId">
+                <th mat-header-cell *matHeaderCellDef>ID de Usuário</th>
+                <td mat-cell *matCellDef="let row">{{row.userId}}</td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
